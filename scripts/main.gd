@@ -63,7 +63,6 @@ func load_save(filepath: String) -> void:
 	
 	status_label.show_status("Loaded File!")
 	selected_folder_filepath_label.text = filepath
-	
 
 
 func store_save(filepath: String) -> void:
