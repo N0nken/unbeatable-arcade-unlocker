@@ -6,3 +6,5 @@ The arcade save file is usually located at "C:\Users\user\AppData\LocalLow\D-CEL
 
 ## Building the project
 The project is built using Godot 4.7.1.
+
+See: https://docs.godotengine.org/en/4.7/tutorials/export/exporting_projects.html
