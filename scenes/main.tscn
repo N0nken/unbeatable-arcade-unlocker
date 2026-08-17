@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://3l0fybaa34b6"]
+
+[ext_resource type="Script" uid="uid://cspqn12uldnt2" path="res://scripts/main.gd" id="1_tbgi4"]
+[ext_resource type="Script" uid="uid://mc1034rvvqey" path="res://scripts/status_label.gd" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://dvwasqhse1qsm" path="res://scripts/tabs.gd" id="2_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://unpc8j4geho" path="res://scenes/unlocks_container.tscn" id="3_sugp2"]
+[ext_resource type="Shader" uid="uid://dqkcfdf2wgvng" path="res://scripts/color_invert.gdshader" id="5_tbgi4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("5_tbgi4")
+shader_parameter/enabled = false
+
+[node name="Main" type="Control" unique_id=1095743083 node_paths=PackedStringArray("tabs", "file_dialog", "light_mode_vfx", "selected_folder_filepath_label", "status_label", "song_unlocks_tab", "character_unlocks_tab", "menu_palette_unlocks_tab", "difficulty_unlocks_tab", "stage_unlocks_tab")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tbgi4")
+tabs = NodePath("MarginContainer/VBoxContainer/Tabs")
+file_dialog = NodePath("FileDialog")
+light_mode_vfx = NodePath("ColorInvertPostProcessing")
+selected_folder_filepath_label = NodePath("MarginContainer/VBoxContainer/Header/ScrollContainer/SelectedFolderFilepath")
+status_label = NodePath("MarginContainer/VBoxContainer/Header/StatusLabel")
+song_unlocks_tab = NodePath("MarginContainer/VBoxContainer/Tabs/SongUnlocks")
+character_unlocks_tab = NodePath("MarginContainer/VBoxContainer/Tabs/CharacterUnlocks")
+menu_palette_unlocks_tab = NodePath("MarginContainer/VBoxContainer/Tabs/MenuPaletteUnlocks")
+difficulty_unlocks_tab = NodePath("MarginContainer/VBoxContainer/Tabs/DifficultyUnlocks")
+stage_unlocks_tab = NodePath("MarginContainer/VBoxContainer/Tabs/StageUnlocks")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=3579949]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1788014845]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1727460225]
+layout_mode = 2
+
+[node name="SongsTab" type="Button" parent="MarginContainer/VBoxContainer/Header" unique_id=1109563258]
+layout_mode = 2
+text = "Songs
+"
+
+[node name="DifficultiesTab" type="Button" parent="MarginContainer/VBoxContainer/Header" unique_id=352398346]
+layout_mode = 2
+text = "Difficulties"
+
+[node name="CharactersTab" type="Button" parent="MarginContainer/VBoxContainer/Header" unique_id=417687095]
+layout_mode = 2
+text = "Characters"
+
+[node name="MenuPalettesTab" type="Button" parent="MarginContainer/VBoxContainer/Header" unique_id=1561298788]
+layout_mode = 2
+text = "Menu Palettes"
+
+[node name="StagesTab" type="Button" parent="MarginContainer/VBoxContainer/Header" unique_id=119874230]
+layout_mode = 2
+text = "Stages"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Header" unique_id=1532166208]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="SelectedFolderFilepath" type="Label" parent="MarginContainer/VBoxContainer/Header/ScrollContainer" unique_id=1747314176]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer/Header" unique_id=795224088]
+layout_mode = 2
+script = ExtResource("2_jyhfs")
+
+[node name="Save" type="Button" parent="MarginContainer/VBoxContainer/Header" unique_id=613574423]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Save"
+
+[node name="SelectFile" type="Button" parent="MarginContainer/VBoxContainer/Header" unique_id=910237926]
+layout_mode = 2
+text = "Select Save File
+"
+
+[node name="LightModeToggle" type="CheckButton" parent="MarginContainer/VBoxContainer/Header" unique_id=497535100]
+layout_mode = 2
+text = "☾/☼"
+
+[node name="Tabs" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1358499236]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_o6xl0")
+
+[node name="SongUnlocks" parent="MarginContainer/VBoxContainer/Tabs" unique_id=958981661 instance=ExtResource("3_sugp2")]
+layout_mode = 2
+
+[node name="DifficultyUnlocks" parent="MarginContainer/VBoxContainer/Tabs" unique_id=1766131799 instance=ExtResource("3_sugp2")]
+visible = false
+layout_mode = 2
+
+[node name="CharacterUnlocks" parent="MarginContainer/VBoxContainer/Tabs" unique_id=1505811758 instance=ExtResource("3_sugp2")]
+visible = false
+layout_mode = 2
+
+[node name="MenuPaletteUnlocks" parent="MarginContainer/VBoxContainer/Tabs" unique_id=183898226 instance=ExtResource("3_sugp2")]
+visible = false
+layout_mode = 2
+
+[node name="StageUnlocks" parent="MarginContainer/VBoxContainer/Tabs" unique_id=2103865088 instance=ExtResource("3_sugp2")]
+visible = false
+layout_mode = 2
+
+[node name="ColorInvertPostProcessing" type="ColorRect" parent="." unique_id=1031748107]
+visible = false
+material = SubResource("ShaderMaterial_g4v7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1686547659]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 2
+file_mode = 0
+display_mode = 1
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+hidden_files_toggle_enabled = false
+file_filter_toggle_enabled = false
+file_sort_options_enabled = false
+folder_creation_enabled = false
+favorites_enabled = false
+recent_list_enabled = false
+layout_toggle_enabled = false
+overwrite_warning_enabled = false
+deleting_enabled = false
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/SongsTab" to="." method="_on_songs_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/DifficultiesTab" to="." method="_on_difficulties_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/CharactersTab" to="." method="_on_characters_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/MenuPalettesTab" to="." method="_on_menu_palettes_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/StagesTab" to="." method="_on_stages_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Header/SelectFile" to="." method="_on_select_file_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Header/LightModeToggle" to="." method="_on_light_mode_toggle_toggled"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
